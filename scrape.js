@@ -1,22 +1,16 @@
-const csvfile = require('./jquery.csv.js')
-
-const data = $.csv.toObjects('./locations.csv')
-
-console.log(data)
-
+const Papa = require('papaparse')
 const fs = require('fs')
-const jquery = require('jquery-csv')
+const file = fs.createReadStream('./locations.csv')
 
-// const data = './data/sample.csv';
+async function getData(newfile) {
+  await Papa.parse(newfile, {
+    header: true,
+    complete: function(results) {
+      return results.data
+    }
+  })
+}
 
-// fs.readFile(sample, 'UTF-8', function (err, csv) {
-//   if (err) { console.log(err); }
-//   csv.toArrays(csv, {}, function (err, data) {
-//     if (err) { console.log(err); }
-//     for (var i = 0, len = data.length; i < len; i++) {
-//       console.log(data[i]);
-//     }
-//   });
-// });
+const data = getData(file)
 
-//for tomorrow - require jquery and play around with how to run. you are close - you got this@
+module.exports = data

@@ -1,4 +1,4 @@
-Season,Show Title,Resturant,City,State,Business ID,Rating,# of Reviews,Latitude,Longitude
+season,showtitle,restaurant,city,state,businessid,rating,reviews,latitude,longitude
 1,Classics,Mac and Ernies,Tarpley,Texas,Mac-and-Ernies-Tarpley,4,36,-99.2754974,29.6577301
 1,Classics,Brints Diner,Wichita,Kansas,Brints-Diner-Wichita,3.5,26,-97.2791519,37.6728706
 1,Classics,Mad Greeks Diner,Baker,California,The-Mad-Greek-Baker,3,905,-116.0741119,35.2667809
