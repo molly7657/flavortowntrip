@@ -1,7 +1,7 @@
 {
-  "name": "boilermaker",
+  "name": "flavortowntrip",
   "version": "2.0.0",
-  "description": "Some boilerplate code to get you started - get shakin'!",
+  "description": "put it on a flip flop!",
   "engines": {
     "node": ">= 7.0.0"
   },
@@ -47,6 +47,8 @@
     "express": "^4.16.4",
     "express-session": "^1.15.1",
     "history": "^4.9.0",
+    "jquery": "^3.4.1",
+    "jquery-csv": "^1.0.5",
     "morgan": "^1.9.1",
     "passport": "^0.4.0",
     "passport-google-oauth": "^2.0.0",
