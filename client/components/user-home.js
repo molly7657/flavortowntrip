@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-
+import {MapContainer} from './google-maps-react/map'
 /**
  * COMPONENT
  */
@@ -10,6 +10,7 @@ export const UserHome = props => {
 
   return (
     <div>
+      <MapContainer />
       <h3>Welcome, {email}</h3>
     </div>
   )
