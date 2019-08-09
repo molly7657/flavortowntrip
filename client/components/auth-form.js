@@ -1,35 +1,37 @@
-import React from 'react'
-import {connect} from 'react-redux'
-import PropTypes from 'prop-types'
 import {auth} from '../store'
+import React, {useState} from 'react'
+import PropTypes from 'prop-types'
+import {connect} from 'react-redux'
+import {GoogleMap, withScriptjs, withGoogleMap, Marker} from 'react-google-maps'
 
 /**
  * COMPONENT
  */
-const AuthForm = props => {
-  const {name, displayName, handleSubmit, error} = props
-
+function Map() {
+  // const [selectedrestaurant, setrestaurant] = useState(null)
   return (
-    <div>
-      <form onSubmit={handleSubmit} name={name}>
-        <div>
-          <label htmlFor="email">
-            <small>Email</small>
-          </label>
-          <input name="email" type="text" />
-        </div>
-        <div>
-          <label htmlFor="password">
-            <small>Password</small>
-          </label>
-          <input name="password" type="password" />
-        </div>
-        <div>
-          <button type="submit">{displayName}</button>
-        </div>
-        {error && error.response && <div> {error.response.data} </div>}
-      </form>
-      <a href="/auth/google">{displayName} with Google</a>
+    <GoogleMap
+      defaultZoom={20}
+      defaultCenter={{lat: 45.421532, lng: -75.697189}}
+    >
+      {/* {somethingfrommydatabase.map(restaurant => {
+      <Marker key={restaurant.id} position={{lat: latitude, lng: longitude}}
+    })} */}
+    </GoogleMap>
+  )
+}
+
+const WrappedMap = withScriptjs(withGoogleMap(Map))
+
+export const AuthForm = props => {
+  return (
+    <div style={{width: '100vw', height: '100vh'}}>
+      <WrappedMap
+        googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4R6AN7SmujjPUIGKdyao2Kqitzr1kiRg&v=3.exp&libraries=geometry,drawing,places&key=AIzaSyDBnjHX_aYzwenEeMjFN2YLpkGHnnYc1Gs "
+        loadingElement={<div style={{height: '100%'}} />}
+        containerElement={<div style={{height: '100%'}} />}
+        mapElement={<div style={{height: '100%'}} />}
+      />
     </div>
   )
 }
