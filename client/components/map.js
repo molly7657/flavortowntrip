@@ -8,12 +8,18 @@ function Map() {
   // const [selectedrestaurant, setrestaurant] = useState(null)
   return (
     <GoogleMap
-      defaultZoom={20}
-      defaultCenter={{lat: 45.421532, lng: -75.697189}}
+      defaultZoom={12}
+      defaultCenter={{lat: 40.70454, lng: -74.009468}}
     >
-      {/* {somethingfrommydatabase.map(restaurant => {
-      <Marker key={restaurant.id} position={{lat: latitude, lng: longitude}}
-    })} */}
+      {/* {this.props.restaurants.map(restaurant => (
+        <Marker
+          key={restaurant.id}
+          position={{
+            lat: parseInt(restaurant.latitude),
+            lng: parseInt(restaurant.longitude)
+          }}
+        />
+      ))} */}
     </GoogleMap>
   )
 }
@@ -41,7 +47,7 @@ class CoolMap extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    getRestaurants: state.restaurants
+    restaurants: state.restaurants
   }
 }
 
