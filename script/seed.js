@@ -4,10 +4,9 @@ const file = fs.createReadStream('locations.csv')
 const db = require('../server/db')
 const {Restaurant, User} = require('../server/db/models')
 
-function cbforparsing(data) {
+async function cbforparsing(data) {
   let dataobj = data
-  console.log(dataobj)
-  return dataobj
+  console.log(Array.isArray(data))
 }
 
 function parseData(url, callback) {
@@ -19,6 +18,8 @@ function parseData(url, callback) {
   })
 }
 
+parseData(file, cbforparsing)
+
 const users = [
   {email: 'cody@email.com', password: '123', isAdmin: true},
   {email: 'murphy@email.com', password: '123', isAdmin: false}
@@ -27,14 +28,25 @@ const users = [
 async function seed() {
   await db.sync({force: true})
   console.log('db synced!')
+
+  await Promise.all(
+    Restaurant.create({
+      season: '22',
+      showtitle: 'Food TruckAPalooza',
+      restaurant: 'The Grilled Cheeserie',
+      city: 'Nashville',
+      state: 'Tennessee',
+      businessid: 'The-Grilled-Cheeserie-Nashville',
+      rating: '4',
+      reviews: '107',
+      latitude: '-86.7839126587',
+      longitude: '36.1675605774)'
+    })
+  )
+
   await Promise.all(users.map(user => User.create(user)))
   console.log(`seeded ${users.length} users`)
 
-  await Promise.all(
-    parseData(file, cbforparsing).map(restaurant =>
-      Restaurant.create(restaurant)
-    )
-  )
   console.log(`seeded successfully`)
 }
 
