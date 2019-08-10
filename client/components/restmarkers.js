@@ -1,12 +1,15 @@
-import React from 'react'
-import {Marker} from 'react-google-maps'
+import React, {useState} from 'react'
+import {Marker, InfoWindow} from 'react-google-maps'
 
 export default class RestaurantMarker extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      selected: false
+    }
+  }
   render() {
-    console.log(
-      parseFloat(this.props.restaurant.latitude),
-      parseFloat(this.props.restaurant.longitude)
-    )
+    // console.log(this.state)
     return (
       <Marker
         position={{
@@ -14,6 +17,9 @@ export default class RestaurantMarker extends React.Component {
           lng: parseFloat(this.props.restaurant.latitude)
         }}
         icon="https://i.imgur.com/OvXlcgDt.png"
+        onClick={() => {
+          this.setState({selected: true})
+        }}
       />
     )
   }
