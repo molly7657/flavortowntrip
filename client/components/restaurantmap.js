@@ -1,6 +1,6 @@
 import React from 'react'
 import {withScriptjs, withGoogleMap, GoogleMap} from 'react-google-maps'
-import RestaurantMarker from './restmarkers'
+import {RestaurantMarker} from './restmarkers'
 
 const RestaurantMap = withScriptjs(
   withGoogleMap(props => {
