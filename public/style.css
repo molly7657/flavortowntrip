@@ -19,3 +19,10 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+.flipflop {
+  position: absolute;
+  left: 0px;
+  top: 60px;
+  z-index: 10;
+}

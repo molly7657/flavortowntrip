@@ -18,6 +18,17 @@ class RestaurantMapContainer extends React.Component {
           containerElement={<div style={{height: '100%'}} />}
           mapElement={<div style={{height: '100%'}} />}
         />
+        <div className="flipflop">
+          <img
+            src="https://i.imgur.com/BTovY2S.png"
+            style={{
+              width: 150,
+              height: 150,
+              textAlign: 'right',
+              padding: 20
+            }}
+          />
+        </div>
       </div>
     )
   }
