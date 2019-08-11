@@ -26,23 +26,23 @@ class RestaurantMapContainer extends React.Component {
     })
   }
 
-  async handleSubmit(event) {
+  handleSubmit(event) {
     event.preventDefault()
     this.props.getCoords(
       event.target.origin.value,
       event.target.destination.value
     )
+    // this.forceUpdate()
   }
 
   render() {
-    console.log(this.props.coords.destination)
     return (
       <div>
         <div>
           <div className="directions" align="center">
             <div className="title">
               <h3 align="center">{'    '}PLAN YOUR TRIP TO</h3>
-              <h2 className="font-effect-fire-animation">{'   '}FLAVORTOWN </h2>
+              <h2>{'   '}FLAVORTOWN </h2>
             </div>
             <div id="form">
               <form onSubmit={this.handleSubmit} align="left">
@@ -50,14 +50,14 @@ class RestaurantMapContainer extends React.Component {
                 <input
                   type="text"
                   name="origin"
-                  value={this.props.coords.origin}
+                  value={this.state.origin}
                   onChange={this.handleChange}
                 />
                 <label htmlFor="destination">Ending Location:</label>
                 <input
                   type="text"
                   name="destination"
-                  value={this.props.coords.destination}
+                  value={this.state.destination}
                   onChange={this.handleChange}
                 />
                 <button type="submit" className="button">

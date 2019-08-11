@@ -27,7 +27,11 @@ export const RestaurantMarker = props => {
           }}
         >
           <div>
-            <img align="center" src="https://i.imgflip.com/2/n87ay.jpg" />
+            <img
+              align="center"
+              src="https://i.imgflip.com/2/n87ay.jpg"
+              className="guy"
+            />
             <h4>{selectedDiner.restaurant}</h4>
             <h5>
               {selectedDiner.city}, {selectedDiner.state}

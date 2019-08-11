@@ -28,8 +28,8 @@ export function MapDirectionsRenderer(props) {
       {
         origin: origin,
         destination: destination,
-        travelMode: 'DRIVING',
-        waypoints: waypoints
+        travelMode: 'DRIVING'
+        // waypoints: waypoints.slice(0, 6)
       },
       (result, status) => {
         if (status === window.google.maps.DirectionsStatus.OK) {
