@@ -10,7 +10,7 @@ export const RestaurantMarker = props => {
           lat: parseFloat(props.restaurant.longitude),
           lng: parseFloat(props.restaurant.latitude)
         }}
-        icon="https://i.imgur.com/OvXlcgDt.png"
+        icon="https://i.imgur.com/zDwd9oD.png"
         onClick={() => {
           setSelectedDiner(props.restaurant)
         }}
@@ -38,6 +38,8 @@ export const RestaurantMarker = props => {
             <p>
               {selectedDiner.city}, {selectedDiner.state}
             </p>
+            <input type="checkbox" value="add" name="add" />
+            <label htmlFor="add">Add to Trip</label>
           </div>
         </InfoWindow>
       )}

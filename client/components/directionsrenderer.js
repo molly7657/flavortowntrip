@@ -9,19 +9,17 @@ export function MapDirectionsRenderer(props) {
     const {restaurants, travelMode} = props
     const origin = props.origin
     const destination = props.destination
-    const waypoints = restaurants
-      .filter(p => {
-        return (
-          origin.lat - 0.22 <= parseFloat(p.latitude) <= origin.lat + 0.22 ||
-          destination.lat - 0.22 <=
-            parseFloat(p.latitude) <=
-            destination.lat + 0.22
-        )
-      })
-      .map(p => ({
-        location: {lat: parseFloat(p.latitude), lng: parseFloat(p.longitude)},
-        stopover: true
-      }))
+    // const waypoints = restaurants
+    //   .filter(
+    //     p =>
+    //       props.origin.lat - 0.1 <=
+    //       parseFloat(p.longitude) <=
+    //       props.origin.lat + 0.1
+    //   )
+    //   .map(p => ({
+    //     location: {lat: parseFloat(p.longitude), lng: parseFloat(p.latitude)},
+    //     stopover: true
+    //   }))
 
     const directionsService = new window.google.maps.DirectionsService()
     directionsService.route(
