@@ -1,5 +1,5 @@
 body {
-  font-family: sans-serif;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 a {
@@ -21,8 +21,25 @@ form div {
 }
 
 .flipflop {
+  width: 150;
+  height: 150;
   position: absolute;
   left: 0px;
-  top: 60px;
-  z-index: 10;
+  top: 25px;
+  z-index: 15;
+}
+
+.directions {
+  width: 150;
+  height: 150;
+  position: absolute;
+  background: #ec4df2;
+  left: 50px;
+  top: 200px;
+  z-index: 15;
+  padding: 10px;
+}
+
+.button {
+  left: 20px;
 }

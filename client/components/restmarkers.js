@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 import {Marker, InfoWindow} from 'react-google-maps'
-import Faker from 'Faker'
 
 export const RestaurantMarker = props => {
   const [selectedDiner, setSelectedDiner] = useState(null)
@@ -28,10 +27,11 @@ export const RestaurantMarker = props => {
           }}
         >
           <div>
-            <h2>{selectedDiner.restaurant}</h2>
-            <h4>
+            <img align="center" src="https://i.imgflip.com/2/n87ay.jpg" />
+            <h4>{selectedDiner.restaurant}</h4>
+            <h5>
               {selectedDiner.city}, {selectedDiner.state}
-            </h4>
+            </h5>
           </div>
         </InfoWindow>
       )}

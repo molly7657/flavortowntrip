@@ -6,7 +6,17 @@ import {logout} from '../store'
 import AppBar from '@material-ui/core/AppBar'
 import {flexbox} from '@material-ui/system'
 
-const Navbar = ({handleClick, isLoggedIn}) => <div />
+const Navbar = ({handleClick, isLoggedIn}) => (
+  <div>
+    <nav>
+      {/* <Link to="/map" style={{padding: 15, color: 'black'}}>
+        Put It On A Flip Flop!
+      </Link> */}
+    </nav>
+    <nav />
+    <hr />
+  </div>
+)
 
 /**
  * CONTAINER
