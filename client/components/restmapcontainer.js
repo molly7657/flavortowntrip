@@ -2,19 +2,19 @@ import React from 'react'
 import RestaurantMap from './restaurantmap'
 import {connect} from 'react-redux'
 import {getRestaurantsThunk} from '../store/restaurants'
-import axios from 'axios'
-// import {getDirectionsThunk} from '../store/directions'
+import {getCoordsThunk} from '../store/coords'
 
 class RestaurantMapContainer extends React.Component {
   constructor() {
     super()
     this.state = {
-      origin: '',
-      destination: ''
+      origin: 'Brooklyn, NY',
+      destination: 'Los Angeles, CA'
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
+
   componentDidMount() {
     this.props.getRestaurants()
   }
@@ -28,62 +28,43 @@ class RestaurantMapContainer extends React.Component {
 
   async handleSubmit(event) {
     event.preventDefault()
-    await this.setState({
-      origin: event.target.origin.value,
-      destination: event.target.destination.value
-    })
-    const origin = this.state.origin
-    const origincoords = await axios.get(
-      'https://maps.googleapis.com/maps/api/geocode/json',
-      {
-        params: {
-          address: origin,
-          key: 'AIzaSyDBnjHX_aYzwenEeMjFN2YLpkGHnnYc1Gs'
-        }
-      }
+    this.props.getCoords(
+      event.target.origin.value,
+      event.target.destination.value
     )
-    const destination = this.state.destination
-    const destinationcoords = await axios.get(
-      'https://maps.googleapis.com/maps/api/geocode/json',
-      {
-        params: {
-          address: destination,
-          key: 'AIzaSyDBnjHX_aYzwenEeMjFN2YLpkGHnnYc1Gs'
-        }
-      }
-    )
-    await this.setState({
-      origin: origincoords.data.results[0].geometry.location,
-      destination: destinationcoords.data.results[0].geometry.location
-    })
   }
 
   render() {
-    console.log(this.state)
+    console.log(this.props.coords.destination)
     return (
       <div>
         <div>
           <div className="directions" align="center">
-            <h4 align="center"> PLAN YOUR TRIP TO FLAVORTOWN </h4>
-            <form onSubmit={this.handleSubmit} align="left">
-              <label htmlFor="origin">Starting Location:</label>
-              <input
-                type="text"
-                name="origin"
-                value={this.state.origin}
-                onChange={this.handleChange}
-              />
-              <label htmlFor="destination">Ending Location:</label>
-              <input
-                type="text"
-                name="destination"
-                value={this.state.destination}
-                onChange={this.handleChange}
-              />
-              <button type="submit" className="button">
-                Put it on a flip flop
-              </button>
-            </form>
+            <div className="title">
+              <h3 align="center">{'    '}PLAN YOUR TRIP TO</h3>
+              <h2 className="font-effect-fire-animation">{'   '}FLAVORTOWN </h2>
+            </div>
+            <div id="form">
+              <form onSubmit={this.handleSubmit} align="left">
+                <label htmlFor="origin">Starting Location:</label>
+                <input
+                  type="text"
+                  name="origin"
+                  value={this.props.coords.origin}
+                  onChange={this.handleChange}
+                />
+                <label htmlFor="destination">Ending Location:</label>
+                <input
+                  type="text"
+                  name="destination"
+                  value={this.props.coords.destination}
+                  onChange={this.handleChange}
+                />
+                <button type="submit" className="button">
+                  That's GANGSTA!
+                </button>
+              </form>
+            </div>
           </div>
         </div>
         <div>
@@ -101,8 +82,8 @@ class RestaurantMapContainer extends React.Component {
           <div style={{width: '100vw', height: '100vh'}}>
             <RestaurantMap
               restaurants={this.props.restaurants}
-              origin={this.state.origin}
-              destination={this.state.destination}
+              origin={this.props.coords.origin}
+              destination={this.props.coords.destination}
               googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4R6AN7SmujjPUIGKdyao2Kqitzr1kiRg&v=3.exp&libraries=geometry,drawing,places&key=AIzaSyDBnjHX_aYzwenEeMjFN2YLpkGHnnYc1Gs "
               loadingElement={<div style={{height: '100%'}} />}
               containerElement={<div style={{height: '100%'}} />}
@@ -117,16 +98,16 @@ class RestaurantMapContainer extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    restaurants: state.restaurants
-    // origin: state.origin,
-    // destination: state.destination
+    restaurants: state.restaurants,
+    coords: state.coords
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    getRestaurants: () => dispatch(getRestaurantsThunk())
-    // getDirections: directions => dispatch(getDirectionshunk(origin)),
+    getRestaurants: () => dispatch(getRestaurantsThunk()),
+    getCoords: (origin, destination) =>
+      dispatch(getCoordsThunk(origin, destination))
   }
 }
 

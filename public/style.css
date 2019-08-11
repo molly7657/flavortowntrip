@@ -1,5 +1,9 @@
 body {
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Amatic SC';
+}
+
+.title {
+  display: flex;
 }
 
 a {
@@ -15,11 +19,6 @@ nav a {
   margin: 1em;
 }
 
-form div {
-  margin: 1em;
-  display: inline-block;
-}
-
 .flipflop {
   width: 150;
   height: 150;
@@ -30,6 +29,9 @@ form div {
 }
 
 .directions {
+  display: flex;
+  flex-direction: column;
+  border-radius: 25px;
   width: 150;
   height: 150;
   position: absolute;
@@ -38,6 +40,10 @@ form div {
   top: 200px;
   z-index: 15;
   padding: 10px;
+}
+
+#form {
+  display: flex;
 }
 
 .button {
