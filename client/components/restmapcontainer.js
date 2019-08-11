@@ -42,9 +42,9 @@ class RestaurantMapContainer extends React.Component {
           <div className="directions" align="center">
             <div className="title">
               <h3 align="center">{'    '}PLAN YOUR TRIP TO</h3>
-              <h2>{'   '}FLAVORTOWN </h2>
+              <h2 className="font-effect-fire-animation">{'   '}FLAVORTOWN </h2>
             </div>
-            <div id="form">
+            <div className="form">
               <form onSubmit={this.handleSubmit} align="left">
                 <label htmlFor="origin">Starting Location:</label>
                 <input

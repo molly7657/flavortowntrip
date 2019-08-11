@@ -41,6 +41,14 @@ const Restaurant = db.define('restaurant', {
   longitude: {
     type: Sequelize.STRING,
     allowNull: false
+  },
+  address: {
+    type: Sequelize.STRING,
+    defaultValue: '101 Main Street'
+  },
+  zipcode: {
+    type: Sequelize.STRING,
+    defaultValue: '12345'
   }
 })
 

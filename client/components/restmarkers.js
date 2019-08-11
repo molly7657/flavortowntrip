@@ -26,16 +26,18 @@ export const RestaurantMarker = props => {
             setSelectedDiner(null)
           }}
         >
-          <div>
+          <div className="infowindow">
             <img
-              align="center"
-              src="https://i.imgflip.com/2/n87ay.jpg"
+              height="75"
+              widthh="75"
+              align="middle"
+              src="https://pbs.twimg.com/profile_images/655846528721027072/21ybkuMC_400x400.png"
               className="guy"
             />
             <h4>{selectedDiner.restaurant}</h4>
-            <h5>
+            <p>
               {selectedDiner.city}, {selectedDiner.state}
-            </h5>
+            </p>
           </div>
         </InfoWindow>
       )}
