@@ -3,6 +3,7 @@ import RestaurantMap from './restaurantmap'
 import {connect} from 'react-redux'
 import {getRestaurantsThunk} from '../store/restaurants'
 import {getCoordsThunk} from '../store/coords'
+import {removeWaypointsThunk} from '../store/waypoints'
 
 class RestaurantMapContainer extends React.Component {
   constructor() {
@@ -26,12 +27,13 @@ class RestaurantMapContainer extends React.Component {
     })
   }
 
-  handleSubmit(event) {
+  async handleSubmit(event) {
     event.preventDefault()
-    this.props.getCoords(
+    await this.props.getCoords(
       event.target.origin.value,
       event.target.destination.value
     )
+    // await this.props.removeWaypoints()
     // this.forceUpdate()
   }
 
@@ -82,6 +84,7 @@ class RestaurantMapContainer extends React.Component {
           <div style={{width: '100vw', height: '100vh'}}>
             <RestaurantMap
               restaurants={this.props.restaurants}
+              waypoints={this.props.waypoints}
               origin={this.props.coords.origin}
               destination={this.props.coords.destination}
               googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4R6AN7SmujjPUIGKdyao2Kqitzr1kiRg&v=3.exp&libraries=geometry,drawing,places&key=AIzaSyDBnjHX_aYzwenEeMjFN2YLpkGHnnYc1Gs "
@@ -99,7 +102,8 @@ class RestaurantMapContainer extends React.Component {
 const mapStateToProps = state => {
   return {
     restaurants: state.restaurants,
-    coords: state.coords
+    coords: state.coords,
+    waypoints: state.waypoints
   }
 }
 
@@ -107,7 +111,8 @@ const mapDispatchToProps = dispatch => {
   return {
     getRestaurants: () => dispatch(getRestaurantsThunk()),
     getCoords: (origin, destination) =>
-      dispatch(getCoordsThunk(origin, destination))
+      dispatch(getCoordsThunk(origin, destination)),
+    removeWaypoints: () => dispatch(removeWaypointsThunk())
   }
 }
 

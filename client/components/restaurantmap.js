@@ -1,6 +1,6 @@
 import React from 'react'
 import {withScriptjs, withGoogleMap, GoogleMap} from 'react-google-maps'
-import {RestaurantMarker} from './restmarkers'
+import RestaurantMarker from './restmarkers'
 import {AutoComplete} from './autocomplete'
 import {MapDirectionsRenderer} from './directionsrenderer'
 
@@ -17,6 +17,7 @@ const RestaurantMap = withScriptjs(
           restaurants={props.restaurants}
           origin={props.origin}
           destination={props.destination}
+          waypoints={props.waypoints}
         />
       </GoogleMap>
     )

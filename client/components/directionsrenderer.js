@@ -4,7 +4,6 @@ import React, {useState, useEffect} from 'react'
 export function MapDirectionsRenderer(props) {
   const [directions, setDirections] = useState(null)
   const [error, setError] = useState(null)
-
   useEffect(() => {
     const {restaurants, travelMode} = props
     const origin = props.origin
@@ -26,8 +25,9 @@ export function MapDirectionsRenderer(props) {
       {
         origin: origin,
         destination: destination,
-        travelMode: 'DRIVING'
-        // waypoints: waypoints.slice(0, 6)
+        travelMode: 'DRIVING',
+        waypoints: props.waypoints,
+        optimizeWaypoints: true
       },
       (result, status) => {
         if (status === window.google.maps.DirectionsStatus.OK) {

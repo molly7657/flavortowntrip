@@ -1,5 +1,7 @@
 import React, {useState} from 'react'
 import {Marker, InfoWindow} from 'react-google-maps'
+import {addWaypointThunk} from '../store/waypoints'
+import {connect} from 'react-redux'
 
 export const RestaurantMarker = props => {
   const [selectedDiner, setSelectedDiner] = useState(null)
@@ -38,11 +40,25 @@ export const RestaurantMarker = props => {
             <p>
               {selectedDiner.city}, {selectedDiner.state}
             </p>
-            <input type="checkbox" value="add" name="add" />
-            <label htmlFor="add">Add to Trip</label>
+            {/* <input type="checkbox" value="add" name="add" onClick={() => addWaypointThunk(selectedDiner.restaurant)}/> */}
+            <button
+              type="submit"
+              className="button"
+              onClick={() => props.addWaypoint(selectedDiner)}
+            >
+              Add to Trip
+            </button>
           </div>
         </InfoWindow>
       )}
     </div>
   )
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    addWaypoint: diner => dispatch(addWaypointThunk(diner))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(RestaurantMarker)
