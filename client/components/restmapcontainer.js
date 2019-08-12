@@ -33,7 +33,7 @@ class RestaurantMapContainer extends React.Component {
       event.target.origin.value,
       event.target.destination.value
     )
-    // await this.props.removeWaypoints()
+    await this.props.removeWaypoints()
     // this.forceUpdate()
   }
 
