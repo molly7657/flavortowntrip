@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {getRestaurantsThunk} from '../store/restaurants'
 import {getCoordsThunk} from '../store/coords'
 import {removeWaypointsThunk} from '../store/waypoints'
+import key from '../../secrets'
 
 class RestaurantMapContainer extends React.Component {
   constructor() {
@@ -87,7 +88,7 @@ class RestaurantMapContainer extends React.Component {
               waypoints={this.props.waypoints}
               origin={this.props.coords.origin}
               destination={this.props.coords.destination}
-              googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4R6AN7SmujjPUIGKdyao2Kqitzr1kiRg&v=3.exp&libraries=geometry,drawing,places&key=AIzaSyDBnjHX_aYzwenEeMjFN2YLpkGHnnYc1Gs "
+              googleMapURL={`https://maps.googleapis.com/maps/api/js?key=AIzaSyC4R6AN7SmujjPUIGKdyao2Kqitzr1kiRg&v=3.exp&libraries=geometry,drawing,places&key=${key}`}
               loadingElement={<div style={{height: '100%'}} />}
               containerElement={<div style={{height: '100%'}} />}
               mapElement={<div style={{height: '100%'}} />}
