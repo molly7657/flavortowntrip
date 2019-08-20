@@ -1,5 +1,9 @@
 body {
-  font-family: sans-serif;
+  font-family: 'Amatic SC';
+}
+
+.title {
+  display: flex;
 }
 
 a {
@@ -15,7 +19,52 @@ nav a {
   margin: 1em;
 }
 
-form div {
-  margin: 1em;
-  display: inline-block;
+.flipflop {
+  width: 150;
+  height: 150;
+  position: absolute;
+  left: 0px;
+  top: 25px;
+  z-index: 15;
+}
+
+.directions {
+  display: flex;
+  flex-direction: column;
+  border-radius: 25px;
+  width: 150;
+  height: 150;
+  position: absolute;
+  background: #ec4df2;
+  left: 50px;
+  top: 200px;
+  z-index: 15;
+  padding: 10px;
+}
+
+.button {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  border-radius: 25px;
+  background: black;
+  color: white;
+}
+
+.guy {
+  left: 15px;
+  width: 300;
+  height: 300;
+}
+
+.infowindow {
+  width: 35;
+  margin: 0;
+  padding: 0;
+  font-family: 'Amatic SC';
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
 }
