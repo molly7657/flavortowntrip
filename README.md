@@ -6,6 +6,6 @@ WELCOME TO FLAVORTOWN!
 To access the ultimate RoadTrip:
 
 1. Fork and Clone Repo
-2. npm install
-3. npm run start
+2. `npm install`
+3. `npm run start-dev`
 4. Enjoy!
